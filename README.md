@@ -1,7 +1,7 @@
 Docker-compose-ready system to retrieve data from https://danepubliczne.imgw.pl/api/data/synop
 It uses 2 images from Docker Hub - pgul/meteo-html for presentation (Nginx) and pgul/meteo-cron to run Python scripts
 
-#setup
+## setup
 docker-compose up -d
 Default port web access is :2342
 
