@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+
+  pg-meteo-html:
+    image: pgul/meteo-html:1.0
+    restart: always
+    depends_on:
+      - pg-meteo-cron
+    ports:
+# set port number here
+      - "2342:80"
+    volumes:
+      - pg-meteo-html:/usr/share/nginx/html
+      - pg-meteo-maps:/usr/share/nginx/html/maps
+      - pg-meteo-plots:/usr/share/nginx/html/plots
+
+  pg-meteo-cron:
+    image: pgul/meteo-cron:1.0
+    restart: always
+    volumes:
+      - pg-meteo-maps:/home/python-runner/data/pics/maps
+      - pg-meteo-plots:/home/python-runner/data/pics/plots
+
+volumes:
+  pg-meteo-maps:
+  pg-meteo-plots:
+  pg-meteo-html:
